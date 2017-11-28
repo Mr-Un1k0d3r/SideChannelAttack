@@ -3,7 +3,7 @@ OKTA side channel attack to enumerate users
 
 # Usage
 ```
-$ python okta.py https://target.com/api/v1/authn
+$ python okta.py
 OKTA Side Channel User Enumeration
 Mr.Un1k0d3r RingZer0 Team 2017
 
