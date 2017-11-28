@@ -23,8 +23,8 @@ Mr.Un1k0d3r RingZer0 Team 2017
 
 [+] Valid user benchmark is 0.265012
 [+] Everything slower than 0.255012 will be considered valid
-       donald@team.com is valid
-       bobby@team.com is valid
+       neo@team.com is valid
+       morpheus@team.com is valid
 ```
 
 # Credit
