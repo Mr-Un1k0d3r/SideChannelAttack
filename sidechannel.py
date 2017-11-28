@@ -19,7 +19,7 @@ def get_response_delay(url, username):
 	return delay
 
 if __name__ == "__main__":
-	print "OKTA Side Channel user enumeration\nMr.Un1k0d3r RingZer0 Team 2017\n\n"
+	print "OKTA Side Channel User Enumeration\nMr.Un1k0d3r RingZer0 Team 2017\n\n"
 	
 	if len(sys.argv) < 5:
 		print "Usage: python %s [url] [valid_user] [path] [delay]\n" % sys.argv[0]
