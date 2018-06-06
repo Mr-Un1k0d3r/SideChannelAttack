@@ -21,7 +21,7 @@ def get_response_delay(config, data):
                 delay = time.time() - start
                 if config["verbose"]:
                         print "[VERBOSE***] Exception was raised: %s" % sys.exc_info()[1]
-                        return delay
+                return delay
 
         delay = time.time() - start
 
