@@ -45,12 +45,12 @@ def set_headers(config, request):
 if __name__ == "__main__":
         print "Benchmark Side Channel Tool\nMr.Un1k0d3r RingZer0 Team 2017\n\n"
 
-        parser = argparse.ArgumentParser(description="Benchmark Side Channel Utility Options.")
-        parser.add_argument('--headers', help='Path to HTTP headers file.')
-        parser.add_argument('--url', help='Path the the URL')
-        parser.add_argument('--data', help='Post data')
-        parser.add_argument('--default', help='Default value use a benchmark for the side channel')
-        parser.add_argument('--round', help='Number of rounds')
+        parser = argparse.ArgumentParser(description="Benchmark Side Channel Utility Options.", required=True)
+        parser.add_argument('--headers', help='Path to HTTP headers file.', required=True)
+        parser.add_argument('--url', help='Path the the URL', required=True)
+        parser.add_argument('--data', help='Post data', required=True)
+        parser.add_argument('--default', help='Default value use a benchmark for the side channel', required=True)
+        parser.add_argument('--round', help='Number of rounds', required=True)
         parser.add_argument('--verbose', nargs='?', default=False, help='Enable Verbose mode')
         args = parser.parse_args()
 
