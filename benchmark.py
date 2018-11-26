@@ -75,7 +75,7 @@ if __name__ == "__main__":
 
         i = 0
         while i < config["round"]:
-                current =  str(int(config["default"]) + i + 1)
+                current =  "%s%d" % (config["default"], i + 1)
                 benchmark = get_response_delay(config, current)
                 print "[+] Delay for %s is %f" % (current, benchmark)
                 i += 1
