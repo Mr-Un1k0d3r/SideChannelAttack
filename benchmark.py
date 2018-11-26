@@ -17,13 +17,13 @@ def get_response_delay(config, data):
 
                 start = time.time()
                 response = urllib2.urlopen(request, (config["data"] % urllib.quote(data)))
+                delay = time.time() - start
         except:
                 delay = time.time() - start
                 if config["verbose"]:
                         print "[VERBOSE***] Exception was raised: %s" % sys.exc_info()[1]
-                return delay
-
-        delay = time.time() - start
+        
+        return delay
 
         if config["verbose"]:
                 print "[VERBOSE***] HTTP response for %s" % data
