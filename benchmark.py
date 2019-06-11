@@ -7,29 +7,32 @@ import os
 
 config = {}
 
-def get_response_delay(config, data):
+def get_response_delay(config, user):
         request = urllib2.Request(config["url"])
         request = set_headers(config, request)
+        payload = config["data"].replace("{{data}}", urllib.quote(user))
         start = 0
+        response = None
+        delay = 0
+        exception = False
         try:
                 if config["verbose"]:
-                        print "[VERBOSE***] Sending the following data: %s" % (config["data"] % urllib.quote(data))
+                        print "[VERBOSE***] Sending the following data: %s" % payload
 
                 start = time.time()
-                response = urllib2.urlopen(request, (config["data"] % urllib.quote(data)))
+                response = urllib2.urlopen(request, payload)
                 delay = time.time() - start
         except:
                 delay = time.time() - start
                 if config["verbose"]:
                         print "[VERBOSE***] Exception was raised: %s" % sys.exc_info()[1]
-        
-        return delay
+                exception = True
 
-        if config["verbose"]:
-                print "[VERBOSE***] HTTP response for %s" % data
+        if config["verbose"] and not exception:
+                print "[VERBOSE***] HTTP response for %s" % user
                 print response.read()
 
-        return delay
+        return float(delay)
 
 def fetch_headers(config):
         config["headers"] = {}
@@ -66,16 +69,25 @@ if __name__ == "__main__":
                 sys.exit(0)
 
         fetch_headers(config)
-
+        avg = 0
         i = 0
         while i < config["round"]:
                 benchmark = get_response_delay(config, config["default"])
                 print "[+] Delay for %s is %f" % (config["default"], benchmark)
                 i += 1
+                avg += benchmark
+                time.sleep(1)
+                
+        print "Average is %f" % (avg / config["round"])
 
+        avg = 0
         i = 0
         while i < config["round"]:
                 current =  "%s%d" % (config["default"], i + 1)
                 benchmark = get_response_delay(config, current)
                 print "[+] Delay for %s is %f" % (current, benchmark)
                 i += 1
+                avg += benchmark
+                time.sleep(1)
+                
+        print "Average is %f" % (avg / config["round"])
