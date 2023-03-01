@@ -10,7 +10,7 @@ config = {}
 def get_response_delay(config, user):
         request = urllib2.Request(config["url"])
         request = set_headers(config, request)
-        payload = config["data"].replace("{{data}}", urllib.quote(user)).replace("{{password}}", "password%d" % random.randint(1,1000000))
+        payload = config["data"].replace("{{data}}", urllib.quote(user)).replace("{{password}}", "password%d" % random.randint(1,1000000)) + "&%d=%d" % (random.randint(1,1000000), random.randint(1,1000000))
         start = 0
         response = None
         delay = 0
