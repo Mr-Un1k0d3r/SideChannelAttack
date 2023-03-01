@@ -4,13 +4,13 @@ import urllib
 import time
 import sys
 import os
-
+import random
 config = {}
 
 def get_response_delay(config, user):
         request = urllib2.Request(config["url"])
         request = set_headers(config, request)
-        payload = config["data"].replace("{{data}}", urllib.quote(user))
+        payload = config["data"].replace("{{data}}", urllib.quote(user)).replace("{{password}}", "password%d" % random.randint(1,1000000))
         start = 0
         response = None
         delay = 0
@@ -77,7 +77,7 @@ if __name__ == "__main__":
                 i += 1
                 avg += benchmark
                 time.sleep(1)
-                
+
         print "Average is %f" % (avg / config["round"])
 
         avg = 0
@@ -89,5 +89,5 @@ if __name__ == "__main__":
                 i += 1
                 avg += benchmark
                 time.sleep(1)
-                
+
         print "Average is %f" % (avg / config["round"])
