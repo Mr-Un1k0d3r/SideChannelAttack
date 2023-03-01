@@ -65,7 +65,7 @@ if __name__ == "__main__":
         config["round"] = int(args.round)
 
         if not os.path.exists(config["headers_path"]):
-                print "[-] %s not found. Cannot load HTTP headers" % filepath
+                print "[-] %s not found. Cannot load HTTP headers" % config["headers_path"]
                 sys.exit(0)
 
         fetch_headers(config)
